@@ -1,0 +1,46 @@
+<div style="margin-left: 20px" ng-controller="studentController">
+    <table border="1">
+        <tr>
+            <th>
+                id
+            </th>
+            <th>
+                name
+            </th>
+            <th>
+                age
+            </th>
+
+        </tr>
+        <tr ng-repeat="x in students">
+            <th>
+                {{ x.id}}
+            </th>
+
+            <th>
+                {{x.name}}
+            </th>
+            <th>
+                {{x.age}}
+            </th>
+            <th>
+                <a href="" ng-click="funcEdit($index)">Edit</a>
+            </th>
+            <th>
+                <a href="" ng-click="funcDelete($index, x.id)">delete</a>
+            </th>
+        </tr>
+    </table>
+    <br>
+    <form ng-show="isEdit" name="formEdit">
+        ID: <input disabled ng-model="Student.id"> <br>
+        name: <input required name="name" ng-model="Student.name">
+        <span ng-show="formEdit.name.$invalid">phải nhập name</span>
+        <br>
+        age: <input required name="age"  ng-model="Student.age">
+        <span ng-show="formEdit.age.$invalid">phải nhập age</span>
+        <br>
+        <button ng-click="backEdit()" >back</button>
+        <button ng-disabled="formEdit.name.$invalid || formEdit.age.$invalid" ng-click="updateEdit()" >update</button>
+    </form>
+</div>
