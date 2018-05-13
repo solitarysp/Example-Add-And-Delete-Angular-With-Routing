@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp', ['ngRoute', 'myApp.version']).config(function ($routeProvider) {
+angular.module('myApp', ['ngRoute', 'myApp.version','angularUtils.directives.dirPagination']).config(function ($routeProvider) {
 
     $routeProvider
         .when('/student', {

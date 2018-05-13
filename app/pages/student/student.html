@@ -1,4 +1,6 @@
 <div style="margin-left: 20px" ng-controller="studentController">
+    số phần tử hiển thị <input ng-model="page">
+
     <table border="1">
         <tr>
             <th>
@@ -12,9 +14,9 @@
             </th>
 
         </tr>
-        <tr ng-repeat="x in students">
+        <tr dir-paginate="x in students|itemsPerPage:page">
             <th>
-                {{ x.id}}
+                {{x.id}}
             </th>
 
             <th>
@@ -31,16 +33,17 @@
             </th>
         </tr>
     </table>
+    <dir-pagination-controls max-size="page" directive-links="true" boundary-links="" true></dir-pagination-controls>
     <br>
     <form ng-show="isEdit" name="formEdit">
         ID: <input disabled ng-model="Student.id"> <br>
         name: <input required name="name" ng-model="Student.name">
         <span ng-show="formEdit.name.$invalid">phải nhập name</span>
         <br>
-        age: <input required name="age"  ng-model="Student.age">
+        age: <input required name="age" ng-model="Student.age">
         <span ng-show="formEdit.age.$invalid">phải nhập age</span>
         <br>
-        <button ng-click="backEdit()" >back</button>
-        <button ng-disabled="formEdit.name.$invalid || formEdit.age.$invalid" ng-click="updateEdit()" >update</button>
+        <button ng-click="backEdit()">back</button>
+        <button ng-disabled="formEdit.name.$invalid || formEdit.age.$invalid" ng-click="updateEdit()">update</button>
     </form>
 </div>
